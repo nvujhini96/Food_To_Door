@@ -16,6 +16,7 @@ var time;
 var address;
 var name;
 let climate;
+let miles;
 
 const Transport = () => {
   const location = useLocation();
@@ -68,12 +69,15 @@ const Transport = () => {
       { latitude: lats, longitude: longs }
     );
     alert(`Distance\n\n${dis} Meter\nOR\n${(dis / 1000) * 0.621371} Miles`);
-
+    miles =(dis / 1000) * 0.621371
     distance = Math.round((((dis / 1000) * 0.621371) / 30) * 60);
     console.log(climate);
     if (climate == "Clouds") {
       time = distance + 5;
-    } else if (climate == "Mist") time = distance + 20;
+    } else if (climate == "Mist") time = distance + 10;
+    else if (climate == "Rain") time = distance + 15;
+    else if (climate == "Thunderstorm") time = distance + 4;
+    else if (climate == "Clear") time = distance;
 
     var $locationText = $(".location");
 
@@ -158,10 +162,11 @@ const Transport = () => {
         </div>
       </div>
       <div style={{ margin: "10px" }}>
-        {time ? (
-          <h2>Travel Time From restaurant to Door is: {time} Min</h2>
+        {time ? (<div>
+           <h2>Distance From restaurant to Door is: {miles} Miles</h2>
+          <h2>Travel Time From restaurant to Door is: {time} Min</h2></div>
         ) : (
-          ""
+          "j"
         )}
 
         <button
