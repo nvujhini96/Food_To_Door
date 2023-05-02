@@ -1,0 +1,33 @@
+
+
+.gapps {
+  height: 500px;
+  width: 195vh;
+  margin-right:10px;
+}
+
+
+.map {
+  margin-right:10px;
+  height: 90%;
+  width: 90%;
+}
+
+.marker {
+  background-image: url('https://i.imgur.com/oz3r3Wq.png');
+  background-size: cover;
+  width: 22px;
+  height: 22px;
+  background-color: yellow;
+  border-radius: 11px;
+  border: solid 3px darkslategray;
+}
+
+.marker-delivery {
+  background-image: url('https://i.imgur.com/cIooqnp.png');
+  background-size: cover;
+  width: 22px;
+  height: 22px;
+  border-radius: 15px;
+  border: solid darkslategrey 3px;
+}
