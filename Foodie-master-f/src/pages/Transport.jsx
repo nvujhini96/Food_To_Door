@@ -22,7 +22,7 @@ const Transport = () => {
   const location = useLocation();
   const id = location.state.List;
   const hotel = "test";
-  const Lats = id.filter(function(rec) {
+  const Lats = id.filter(function (rec) {
     name = rec.name;
     address = rec.address;
     lats = rec.lat;
@@ -69,7 +69,7 @@ const Transport = () => {
       { latitude: lats, longitude: longs }
     );
     alert(`Distance\n\n${dis} Meter\nOR\n${(dis / 1000) * 0.621371} Miles`);
-    miles =(dis / 1000) * 0.621371
+    miles = (dis / 1000) * 0.621371;
     distance = Math.round((((dis / 1000) * 0.621371) / 30) * 60);
     console.log(climate);
     if (climate == "Clouds") {
@@ -78,7 +78,7 @@ const Transport = () => {
     else if (climate == "Rain") time = distance + 15;
     else if (climate == "Thunderstorm") time = distance + 4;
     else if (climate == "Clear") time = distance;
-
+    else time = distance;
     var $locationText = $(".location");
 
     // Check for geolocation browser support and execute success method
@@ -97,7 +97,7 @@ const Transport = () => {
         myLng = pos.coords.longitude,
         loadingTimeout;
 
-      var loading = function() {
+      var loading = function () {
         $locationText.text("fetching...");
       };
 
@@ -109,14 +109,14 @@ const Transport = () => {
           "&lon=" +
           myLng
       )
-        .done(function(data) {
+        .done(function (data) {
           if (loadingTimeout) {
             clearTimeout(loadingTimeout);
             loadingTimeout = null;
             $locationText.text(data.display_name);
           }
         })
-        .fail(function() {});
+        .fail(function () {});
     }
 
     function geoLocationError(error) {
@@ -162,11 +162,13 @@ const Transport = () => {
         </div>
       </div>
       <div style={{ margin: "10px" }}>
-        {time ? (<div>
-           <h2>Distance From restaurant to Door is: {miles} Miles</h2>
-          <h2>Travel Time From restaurant to Door is: {time} Min</h2></div>
+        {time ? (
+          <div>
+            <h2>Distance From restaurant to Door is: {miles} Miles</h2>
+            <h2>Travel Time From restaurant to Door is: {time} Min</h2>
+          </div>
         ) : (
-          "j"
+          ""
         )}
 
         <button
